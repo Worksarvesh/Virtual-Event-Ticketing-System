@@ -35,15 +35,24 @@ export default function AddEvent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Validate required fields
+    if (!formData.title || !formData.description || !formData.eventDate || !formData.eventTime || !formData.location) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
     axios
       .post("/createEvent", formData)
       .then((response) => {
         console.log("Event posted successfully:", response.data);
-        
+        // Optionally reset the form or provide feedback to the user
       })
       .catch((error) => {
         console.error("Error posting event:", error);
+        alert("Failed to post event. Please try again.");
       });
+
   };
 
   return (
