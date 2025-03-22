@@ -1,51 +1,51 @@
 /* eslint-disable no-unused-vars */
-import { Route, Routes } from 'react-router-dom'
-import './App.css'
-import IndexPage from './pages/IndexPage'
-import RegisterPage from './pages/RegisterPage'
-import Layout from './Layout'
-import LoginPage from './pages/LoginPage'
-import axios from 'axios'
-import { UserContextProvider } from './UserContext'
-import UserAccountPage from './pages/UserAccountPage'
-import ForgotPassword from './pages/ForgotPassword'
-import ResetPassword from './pages/ResetPassword'
-import AddEvent from './pages/AddEvent'
-import EventPage from './pages/EventPage'
-import CalendarView from './pages/CalendarView'
-import OrderSummary from './pages/OrderSummary'
-import PaymentSummary from './pages/PaymentSummary'
-import TicketPage from './pages/TicketPage'
-import CreatEvent from './pages/CreateEvent'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
+import IndexPage from './pages/IndexPage';
+import RegisterPage from './pages/RegisterPage';
+import Layout from './Layout';
+import LoginPage from './pages/LoginPage';
+import axios from 'axios';
+import { UserContextProvider } from './UserContext';
+import UserAccountPage from './pages/UserAccountPage';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
+import AddEvent from './pages/AddEvent';
+import EventPage from './pages/EventPage';
+import CalendarView from './pages/CalendarView';
+import OrderSummary from './pages/OrderSummary';
+import PaymentSummary from './pages/PaymentSummary';
+import TicketPage from './pages/TicketPage';
+import CreatEvent from './pages/CreateEvent';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import EventDetails from './pages/EventDetails';
+import Analytics from './pages/Analytics';
+import CreatorDashboard from './pages/CreatorDashboard';
 
 axios.defaults.baseURL = 'http://localhost:4000/';
-axios.defaults.withCredentials=true;
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
-    <UserContextProvider> 
-    <Routes>
-            
-      <Route path='/' element={<Layout />}>
-        <Route index element = {<IndexPage />} />
-        <Route path='/useraccount' element = {<UserAccountPage />}/>
-        <Route path='/createEvent' element = {<AddEvent/>} />
-        <Route path='/event/:id' element= {<EventPage/>} />
-        <Route path='/calendar' element={<CalendarView />} />
-        <Route path='/wallet' element={<TicketPage />}/>
-        <Route path='/event/:id/ordersummary' element = {<OrderSummary />} />
-      </Route>
-
-      <Route path='/register' element={<RegisterPage />}/>
-      <Route path='/login' element={<LoginPage />}/>
-      <Route path='/forgotpassword' element = {<ForgotPassword/>} />
-      <Route path='/resetpassword' element = {<ResetPassword/>} />
-      <Route path='/event/:id/ordersummary/paymentsummary' element = {<PaymentSummary />} />
-      
-    
-    </Routes>
-    </UserContextProvider>  
-  )
+    <UserContextProvider>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/events/:id" element={<EventDetails />} />
+            <Route path="/create-event" element={<CreateEvent />} />
+            <Route path="/events/:id/analytics" element={<Analytics />} />
+            <Route path="/dashboard" element={<CreatorDashboard />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </UserContextProvider>
+  );
 }
 
-export default App
+export default App;
