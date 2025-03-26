@@ -1,19 +1,18 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navigation from './components/Navigation';
-import Footer from './pages/Footer'
-import Header from './pages/Header'
 
-const Layout = () => {
+export default function Layout() {
     return (
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screen flex flex-col">
             <Navigation />
-            <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <main className="flex-grow container mx-auto px-4 py-8">
                 <Outlet />
             </main>
-            <Footer />
+            <footer className="bg-gray-800 text-white py-4">
+                <div className="container mx-auto px-4 text-center">
+                    <p>&copy; {new Date().getFullYear()} Virtual Event Ticketing System. All rights reserved.</p>
+                </div>
+            </footer>
         </div>
     );
-};
-
-export default Layout;
+}

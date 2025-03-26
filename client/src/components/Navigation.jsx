@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useUser } from '../UserContext';
+import { useUserContext } from '../UserContext';
 
 const Navigation = () => {
-    const { user } = useUser();
+    const { user } = useUserContext();
     const location = useLocation();
 
     const isActive = (path) => {
